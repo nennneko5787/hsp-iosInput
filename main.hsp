@@ -1,11 +1,14 @@
 #include "hsp3dish.as"
 
-	objsize 300, 20
-	v1 = "入力してください..."
+	objsize 300, 60
     pos 10, 10
-	input v1
+	button gosub "キーボード表示", *openKeyBoard
 
 	repeat
     redraw 1
     await (1000 / 60)
 	loop
+
+*openKeyBoard
+    devcontrol "open_keyboard"
+    return

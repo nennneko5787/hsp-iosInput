@@ -2,6 +2,7 @@
 #import "HspViewController.h"
 #import "iOSBridge.h"
 #import <AudioToolbox/AudioServices.h>
+#import <UIKit/UIKit.h>
 
 #include "../hsp3/hsp3config.h"
 #include "../hsp3/hgio.h"
@@ -9,6 +10,25 @@
 #include "../hsp3/sysreq.h"
 
 void gb_setogl( EAGLContext *context, GLuint viewRenderBuff, GLuint viewFrameBuff );
+
+// システムキーボード
+- (void)showSystemKeyboard {
+    // 非表示のUITextFieldを作成（表示しない）
+    UITextField *tempTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+    
+    // 見た目を非表示にする（0.0fで完全に透明）
+    tempTextField.alpha = 0.0f;
+    
+    // ビューに追加（非表示のまま）
+    [self.view addSubview:tempTextField];
+    
+    // フォーカスを当ててキーボードを表示
+    [tempTextField becomeFirstResponder];
+    
+    // フォーカス後すぐに削除する（キーボードが表示されるタイミングで画面に表示されない）
+    //（任意で非表示にしているUITextFieldを削除）
+    [tempTextField removeFromSuperview];
+}
 
 
 /*----------------------------------------------------------*/
@@ -35,6 +55,10 @@ static int hsp3dish_devcontrol( char *cmd, int p1, int p2, int p3 )
         AudioServicesPlaySystemSound(p1);
 		return 0;
 	}
+    if ( strcmp( cmd, "open_keyboard")==0 ) {
+        showSystemKeyboard();
+        return 0;
+    }
 	return -1;
 }
 
