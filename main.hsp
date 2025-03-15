@@ -5,6 +5,7 @@
 	button gosub "キーボード表示", *openKeyBoard
 
 	repeat
+    redraw 0
     redraw 1
     await (1000 / 60)
 	loop
