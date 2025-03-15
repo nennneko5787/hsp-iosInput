@@ -24,7 +24,7 @@ static char *devres_none;
 static void showSystemKeyboard() {
     textInputView = [[CustomTextInputView alloc] initWithFrame:CGRectMake(50, 100, 300, 50)];
     textInputView.backgroundColor = [UIColor lightGrayColor];
-    [hspview_controller.view addSubview:self.textInputView];
+    [hspview_controller.view addSubview:textInputView];
 
     // キーボードを表示させるために、ビューがレスポンダにする
     [textInputView becomeFirstResponder];
