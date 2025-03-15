@@ -20,7 +20,7 @@ static int devinfo_dummy;
 static char *devres_none;
 
 // システムキーボード
-static void showSystemKeyboard {
+static void showSystemKeyboard() {
     // 非表示のUITextFieldを作成（表示しない）
     UITextField *tempTextField = [[UITextField alloc] initWithFrame:CGRectZero];
     
