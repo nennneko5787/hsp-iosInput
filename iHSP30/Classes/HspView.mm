@@ -2,7 +2,7 @@
 #import "HspViewController.h"
 #import "iOSBridge.h"
 #import <AudioToolbox/AudioServices.h>
-#import <UIKit/UIKit.h>
+#import "CustomTextInputView.h"
 
 #include "../hsp3/hsp3config.h"
 #include "../hsp3/hgio.h"
@@ -16,28 +16,18 @@ void gb_setogl( EAGLContext *context, GLuint viewRenderBuff, GLuint viewFrameBuf
 /*----------------------------------------------------------*/
 static HSP3DEVINFO *mem_devinfo;
 static HspViewController *hspview_controller;
+static CustomTextInputView *textInputView;
 static int devinfo_dummy;
 static char *devres_none;
 
 // システムキーボード
 static void showSystemKeyboard() {
-    // 非表示のUITextFieldを作成
-    UITextField *tempTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-    
-    // 見た目を非表示にする（0.0fで完全に透明）
-    tempTextField.alpha = 0.0f;
-    
-    // ビューに追加（非表示のまま）
-    [hspview_controller.view addSubview:tempTextField];
-    
-    // フォーカスを当ててキーボードを表示
-    [tempTextField becomeFirstResponder];
-    
-    // すぐに削除しないで少し待機する（UIが反映される時間を確保）
-    dispatch_async(dispatch_get_main_queue(), ^{
-        // フォーカス後すぐに削除する（キーボードが表示されるタイミングで画面に表示されない）
-        [tempTextField removeFromSuperview];
-    });
+    textInputView = [[CustomTextInputView alloc] initWithFrame:CGRectMake(50, 100, 300, 50)];
+    textInputView.backgroundColor = [UIColor lightGrayColor];
+    [hspview_controller.view addSubview:self.textInputView];
+
+    // キーボードを表示させるために、ビューがレスポンダにする
+    [textInputView becomeFirstResponder];
 }
 
 
