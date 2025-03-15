@@ -35,7 +35,7 @@ static void showSystemKeyboard() {
     
     // フォーカス後すぐに削除する（キーボードが表示されるタイミングで画面に表示されない）
     //（任意で非表示にしているUITextFieldを削除）
-    [tempTextField removeFromSuperview];
+    // [tempTextField removeFromSuperview];
 }
 
 static int hsp3dish_devprm( char *name, char *value )

@@ -10,5 +10,6 @@
 	loop
 
 *openKeyBoard
+    dialog "キーボードオープン！"
     devcontrol "open_keyboard"
     return
