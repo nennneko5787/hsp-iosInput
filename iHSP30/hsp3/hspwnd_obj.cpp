@@ -12,7 +12,7 @@
 #include "../hsp3/dpmread.h"
 #include "../hsp3/strbuf.h"
 #include "../hsp3/strnote.h"
-#include "./ios/InputBoxHelper.h"
+#include "./ios/inputbox_helper.h"
 
 #include "hgio.h"
 #include "supio.h"
