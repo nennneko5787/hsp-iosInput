@@ -21,7 +21,7 @@ static char *devres_none;
 
 // システムキーボード
 static void showSystemKeyboard() {
-    // 非表示のUITextFieldを作成（表示しない）
+    // 非表示のUITextFieldを作成
     UITextField *tempTextField = [[UITextField alloc] initWithFrame:CGRectZero];
     
     // 見た目を非表示にする（0.0fで完全に透明）
@@ -33,10 +33,13 @@ static void showSystemKeyboard() {
     // フォーカスを当ててキーボードを表示
     [tempTextField becomeFirstResponder];
     
-    // フォーカス後すぐに削除する（キーボードが表示されるタイミングで画面に表示されない）
-    //（任意で非表示にしているUITextFieldを削除）
-    // [tempTextField removeFromSuperview];
+    // すぐに削除しないで少し待機する（UIが反映される時間を確保）
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // フォーカス後すぐに削除する（キーボードが表示されるタイミングで画面に表示されない）
+        [tempTextField removeFromSuperview];
+    });
 }
+
 
 static int hsp3dish_devprm( char *name, char *value )
 {
