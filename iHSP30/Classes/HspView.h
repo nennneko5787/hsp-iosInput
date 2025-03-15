@@ -36,7 +36,6 @@
 - (void)useMultiTouch;
 - (void)useRetina;
 - (void)setParent:(UIViewController *)controller;
-- (void)showSystemKeyboard;
 - (id)initWithFrameSide:(CGRect)frame;
 - (id)initWithFrameOrg:(CGRect)frame;
 
