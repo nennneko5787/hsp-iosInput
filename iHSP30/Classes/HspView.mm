@@ -56,7 +56,9 @@ static int hsp3dish_devcontrol( char *cmd, int p1, int p2, int p3 )
 		return 0;
 	}
     if ( strcmp( cmd, "open_keyboard")==0 ) {
-        [self showSystemKeyboard];
+        if (hspview_controller != nil) {
+            [hspview_controller.view showSystemKeyboard];
+        }
         return 0;
     }
 	return -1;
