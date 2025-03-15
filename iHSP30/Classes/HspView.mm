@@ -12,7 +12,7 @@
 void gb_setogl( EAGLContext *context, GLuint viewRenderBuff, GLuint viewFrameBuff );
 
 // システムキーボード
-- (void)showSystemKeyboard {
+static void showSystemKeyboard() {
     // 非表示のUITextFieldを作成（表示しない）
     UITextField *tempTextField = [[UITextField alloc] initWithFrame:CGRectZero];
     
