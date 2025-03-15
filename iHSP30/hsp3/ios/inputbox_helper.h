@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
-#include "../hspwnd_dish.h" // HSP3 のオブジェクト管理用ヘッダー
+#import "../hspwnd_dish.h" // HSP3 のオブジェクト管理用ヘッダー
 
 @interface InputBoxHelper : NSObject <UITextFieldDelegate>
 
