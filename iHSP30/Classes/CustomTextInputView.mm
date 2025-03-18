@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface CustomTextInputView : UIView <UIKeyInput, UITextInputTraits>
+@interface CustomTextInputView : UIView <UIKeyInput>
 @property (nonatomic, strong) NSMutableString *text;
 @end
 
@@ -15,14 +15,12 @@
 }
 
 - (void)insertText:(NSString *)text {
-    [self.text appendString:text]; // テキストを追加
-    [self setNeedsDisplay]; // 再描画
+    [self.text appendString:text];
 }
 
 - (void)deleteBackward {
     if (self.text.length > 0) {
-        [self.text deleteCharactersInRange:NSMakeRange(self.text.length - 1, 1)]; // 末尾を削除
-        [self setNeedsDisplay]; // 再描画
+        [self.text deleteCharactersInRange:NSMakeRange(self.text.length - 1, 1)];
     }
 }
 
@@ -30,10 +28,9 @@
     return self.text.length > 0;
 }
 
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-    // テキストの表示処理
-    [self.text drawInRect:rect withAttributes:nil]; // 必要に応じてカスタムフォントを設定
+// キーボード入力を受け付けるために必要
+- (BOOL)canBecomeFirstResponder {
+    return YES;
 }
 
 @end
