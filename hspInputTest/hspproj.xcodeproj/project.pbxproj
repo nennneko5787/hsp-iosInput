@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		11C24AC5A7F46221FEC10E8E /* CustomTextInputView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2309445FA3843F97DD600E88 /* CustomTextInputView.h */; };
+		108D473E924058A66F95A933 /* CustomTextInputView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8B4E433FB9464B5EC586B322 /* CustomTextInputView.mm */; };
 		1E0417D3189A70E5003F87D6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0417D0189A70E5003F87D6 /* Default-568h@2x.png */; };
 		1E0417D4189A70E5003F87D6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0417D1189A70E5003F87D6 /* Default.png */; };
 		1E0417D5189A70E5003F87D6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0417D2189A70E5003F87D6 /* Default@2x.png */; };
@@ -72,11 +72,11 @@
 		1EA5558F189A462D00344013 /* icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5558C189A462D00344013 /* icon57.png */; };
 		1EA55590189A462D00344013 /* icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5558D189A462D00344013 /* icon58.png */; };
 		1EA55591189A462D00344013 /* icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5558E189A462D00344013 /* icon120.png */; };
-		46A346148F0A025557212288 /* CustomTextInputView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 068C4BB988DBEE9651A20894 /* CustomTextInputView.mm */; };
+		3D4B4B62B70D705F2D1C3D75 /* CustomTextInputView.h in Headers */ = {isa = PBXBuildFile; fileRef = 139A44CD947E87A3CDCCE835 /* CustomTextInputView.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		068C4BB988DBEE9651A20894 /* CustomTextInputView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = CustomTextInputView.mm; path = CustomTextInputView.mm; sourceTree = SOURCE_ROOT; };
+		139A44CD947E87A3CDCCE835 /* CustomTextInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CustomTextInputView.h; path = ../iHSP30/classes/CustomTextInputView.h; sourceTree = SOURCE_ROOT; };
 		1E0417D0189A70E5003F87D6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1E0417D1189A70E5003F87D6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1E0417D2189A70E5003F87D6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 		1EA5558C189A462D00344013 /* icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon57.png; sourceTree = "<group>"; };
 		1EA5558D189A462D00344013 /* icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon58.png; sourceTree = "<group>"; };
 		1EA5558E189A462D00344013 /* icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120.png; sourceTree = "<group>"; };
-		2309445FA3843F97DD600E88 /* CustomTextInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CustomTextInputView.h; path = CustomTextInputView.h; sourceTree = SOURCE_ROOT; };
+		8B4E433FB9464B5EC586B322 /* CustomTextInputView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = CustomTextInputView.mm; path = ../iHSP30/classes/CustomTextInputView.mm; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,8 +227,8 @@
 				1E480DB41859C4540052A2F2 /* hspproj */,
 				1E480DAD1859C4540052A2F2 /* Frameworks */,
 				1E480DAC1859C4540052A2F2 /* Products */,
-				068C4BB988DBEE9651A20894 /* CustomTextInputView.mm */,
-				2309445FA3843F97DD600E88 /* CustomTextInputView.h */,
+				8B4E433FB9464B5EC586B322 /* CustomTextInputView.mm */,
+				139A44CD947E87A3CDCCE835 /* CustomTextInputView.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -456,11 +456,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		78E140D7BC8E1A67F1849CC2 /* Headers */ = {
+		1BBE4DA8920576BAB6C09169 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11C24AC5A7F46221FEC10E8E /* CustomTextInputView.h in Headers */,
+				3D4B4B62B70D705F2D1C3D75 /* CustomTextInputView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +474,7 @@
 				1E480DA71859C4540052A2F2 /* Sources */,
 				1E480DA81859C4540052A2F2 /* Frameworks */,
 				1E480DA91859C4540052A2F2 /* Resources */,
-				78E140D7BC8E1A67F1849CC2 /* Headers */,
+				1BBE4DA8920576BAB6C09169 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -590,7 +590,7 @@
 				1E4AFF5925E00F4700213810 /* hspwnd_obj.cpp in Sources */,
 				1E4AFF2C25E00F4700213810 /* iOSBridge.mm in Sources */,
 				1E4AFF3225E00F4700213810 /* misc.mm in Sources */,
-				46A346148F0A025557212288 /* CustomTextInputView.mm in Sources */,
+				108D473E924058A66F95A933 /* CustomTextInputView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
