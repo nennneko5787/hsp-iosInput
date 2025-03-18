@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface CustomTextInputView : UIView
+@interface CustomTextInputView : UIView <UIKeyInput, UITextInputTraits>
 @property (nonatomic, strong) NSMutableString *text;
 @end
 
