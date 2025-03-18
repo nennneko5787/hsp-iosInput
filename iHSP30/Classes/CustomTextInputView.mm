@@ -1,3 +1,9 @@
+#import <UIKit/UIKit.h>
+
+@interface CustomTextInputView : UIView
+@property (nonatomic, strong) NSMutableString *text;
+@end
+
 @implementation CustomTextInputView
 
 - (instancetype)init {
