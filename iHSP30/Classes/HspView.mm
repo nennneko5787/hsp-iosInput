@@ -63,20 +63,20 @@ static int *hsp3dish_devinfoi( char *name, int *size )
     //	return &devinfo_dummy;
 }
 
-static char *hsp3dish_devinfo( char *name )
-{
-	if ( strcmp( name, "name" )==0 ) {
-		return mem_devinfo->devname;
-	}
-	if ( strcmp( name, "error" )==0 ) {
-		return mem_devinfo->error;
-	}
-	if ( strcmp( name, "keyboard_text" )==0 ) {
-        char *cString = [text_view.text UTF8String];
-		return cString;
-	}
-	return NULL;
+static char *hsp3dish_devinfo(char *name) {
+    if (strcmp(name, "name") == 0) {
+        return mem_devinfo->devname;
+    }
+    if (strcmp(name, "error") == 0) {
+        return mem_devinfo->error;
+    }
+    if (strcmp(name, "keyboard_text") == 0) {
+        const char *cString = [text_view.text UTF8String];
+        return (char *)cString;
+    }
+    return NULL;
 }
+
 
 static void hsp3dish_setdevinfo( void )
 {
