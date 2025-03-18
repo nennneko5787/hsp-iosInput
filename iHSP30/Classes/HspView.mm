@@ -2,7 +2,7 @@
 #import "HspViewController.h"
 #import "iOSBridge.h"
 #import <AudioToolbox/AudioServices.h>
-#import "CustomTextInputView.h"
+#import <UIKit/UIKit.h>
 
 #include "../hsp3/hsp3config.h"
 #include "../hsp3/hgio.h"
@@ -16,18 +16,19 @@ void gb_setogl( EAGLContext *context, GLuint viewRenderBuff, GLuint viewFrameBuf
 /*----------------------------------------------------------*/
 static HSP3DEVINFO *mem_devinfo;
 static HspViewController *hspview_controller;
-static CustomTextInputView *textInputView;
+static UITextView *text_view;
 static int devinfo_dummy;
 static char *devres_none;
 
 // システムキーボード
 static void showSystemKeyboard() {
-    textInputView = [[CustomTextInputView alloc] initWithFrame:CGRectZero];
-    textInputView.hidden = YES;
+    text_view =  [[UITextView alloc] init];
+    text_view.hidden = YES;
+    text_view.editable = YES;
     [hspview_controller.view addSubview:textInputView];
 
     // キーボードを表示させるために、ビューがレスポンダにする
-    [textInputView becomeFirstResponder];
+    [text_view becomeFirstResponder];
 }
 
 
