@@ -23,7 +23,7 @@ static char *devres_none;
 // システムキーボード
 static void showSystemKeyboard() {
     textInputView = [[CustomTextInputView alloc] initWithFrame:CGRectZero];
-    self.hiddenTextInput.hidden = YES;
+    textInputView.hidden = YES;
     [hspview_controller.view addSubview:textInputView];
 
     // キーボードを表示させるために、ビューがレスポンダにする
