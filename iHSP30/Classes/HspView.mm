@@ -22,15 +22,12 @@ static char *devres_none;
 
 // システムキーボード
 static void showSystemKeyboard() {
-    text_view =  [[UITextView alloc] init];
-    [text_view setHidden:YES];
-    text_view.editable = YES;
-    [hspview_controller.view addSubview:text_view];
-
-    // キーボードを表示させるために、ビューがレスポンダにする
     [text_view becomeFirstResponder];
 }
 
+static void closeSystemKeyboard() {
+    text_view.resignFirstResponder()
+}
 
 static int hsp3dish_devprm( char *name, char *value )
 {
@@ -52,6 +49,10 @@ static int hsp3dish_devcontrol( char *cmd, int p1, int p2, int p3 )
         showSystemKeyboard();
         return 0;
     }
+    if ( strcmp( cmd, "close_keyboard")==0 ) {
+        closeSystemKeyboard();
+        return 0;
+    }
 	return -1;
 }
 
@@ -69,6 +70,9 @@ static char *hsp3dish_devinfo( char *name )
 	}
 	if ( strcmp( name, "error" )==0 ) {
 		return mem_devinfo->error;
+	}
+	if ( strcmp( name, "keyboard_text" )==0 ) {
+		return text_view.text;
 	}
 	return NULL;
 }
@@ -454,6 +458,13 @@ static void hsp3dish_setdevinfo( void )
 {
     parent = controller;
     hspview_controller = (HspViewController *)controller;
+
+    // システムキーボード初期化
+    text_view =  [[UITextView alloc] init];
+    [text_view setHidden:YES];
+    text_view.editable = YES;
+    [hspview_controller.view addSubview:text_view];
+
 	NSLog(@"---%x", controller );
 }
 

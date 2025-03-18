@@ -3,9 +3,17 @@
 	objsize 300, 60
     pos 10, 10
 	button gosub "キーボード表示", *openKeyBoard
+    objId = stat
 
 	repeat
+    devinfo text, "keyboard_text"
+
     redraw 0
+        if (text == "") {
+            objprm objId, "キーボード表示"
+        } else {
+            objprm objId, text
+        }
     redraw 1
     await (1000 / 60)
 	loop

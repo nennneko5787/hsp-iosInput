@@ -4,20 +4,24 @@
 //
 #include "hsp3r.h"
 
-#define _HSP3CNV_DATE "2025/03/15"
-#define _HSP3CNV_TIME "14:54:45"
-#define _HSP3CNV_MAXVAR 0
+#define _HSP3CNV_DATE "2025/03/18"
+#define _HSP3CNV_TIME "21:11:29"
+#define _HSP3CNV_MAXVAR 2
 #define _HSP3CNV_MAXHPI 32
 #define _HSP3CNV_VERSION 0x360
 #define _HSP3CNV_BOOTOPT 4096
 
 /*-----------------------------------------------------------*/
 
+static PVal *Var_0;
+static PVal *Var_1;
 
 /*-----------------------------------------------------------*/
 
 void __HspEntry( void ) {
 	// Var initalize
+	Var_0 = &mem_var[0];
+	Var_1 = &mem_var[1];
 
 	// objsize 300, 60
 	PushInt(60); 
@@ -31,6 +35,9 @@ void __HspEntry( void ) {
 	PushLabel(0); 
 	PushStr("キーボード表\示"); 
 	PushInt(1); Extcmd(0,3);
+	// _HspVar0 =stat
+	PushSysvar(3,0); 
+	VarSet(Var_0,0);
 	// repeat
 	PushLabel(1); 
 	PushLabel(3); Prgcmd(4,2); return;
@@ -38,19 +45,43 @@ void __HspEntry( void ) {
 }
 
 static void L0003( void ) {
+	//  _HspVar1, "keyboard_text"
+	PushStr("keyboard_text"); 
+	PushVAP(Var_1,0); 
+	Extcmd(71,2);
 	// redraw 0
 	PushInt(0); 
 	Extcmd(27,1);
+	// if _HspVar1=""
+	PushVar(Var_1,0); PushStr(""); CalcEqI(); 
+	if (HspIf()) { TaskSwitch(4); return; }
+	// objprm _HspVar0, "キーボード表\示"
+	PushStr("キーボード表\示"); 
+	PushVAP(Var_0,0); 
+	Extcmd(50,2);
+	TaskSwitch(5);
+}
+
+static void L0004( void ) {
+	// else
+	// objprm _HspVar0, _HspVar1
+	PushVAP(Var_1,0); 
+	PushVAP(Var_0,0); 
+	Extcmd(50,2);
+	TaskSwitch(5);
+}
+
+static void L0005( void ) {
 	// redraw 1
 	PushInt(1); 
 	Extcmd(27,1);
 	// await 1000/60
 	PushInt(16);/*OPT*/ 
 	Prgcmd(8,1);
-	TaskSwitch(4);
+	TaskSwitch(6);
 }
 
-static void L0004( void ) {
+static void L0006( void ) {
 	// loop 
 	Prgcmd(5,0);
 	return;
@@ -65,10 +96,10 @@ static void L0001( void ) {
 	// dialog "キーボードオープン！"
 	PushStr("キーボードオープン！"); 
 	Extcmd(3,1);
-	TaskSwitch(5);
+	TaskSwitch(7);
 }
 
-static void L0005( void ) {
+static void L0007( void ) {
 	//  "open_keyboard"
 	PushStr("open_keyboard"); 
 	Extcmd(74,1);
@@ -96,6 +127,8 @@ CHSP3_TASK __HspTaskFunc[]={
 (CHSP3_TASK) L0003,
 (CHSP3_TASK) L0004,
 (CHSP3_TASK) L0005,
+(CHSP3_TASK) L0006,
+(CHSP3_TASK) L0007,
 (CHSP3_TASK) 0,
 
 };
