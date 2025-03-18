@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		11C24AC5A7F46221FEC10E8E /* CustomTextInputView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2309445FA3843F97DD600E88 /* CustomTextInputView.h */; };
 		1E0417D3189A70E5003F87D6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0417D0189A70E5003F87D6 /* Default-568h@2x.png */; };
 		1E0417D4189A70E5003F87D6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0417D1189A70E5003F87D6 /* Default.png */; };
 		1E0417D5189A70E5003F87D6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0417D2189A70E5003F87D6 /* Default@2x.png */; };
@@ -72,11 +71,9 @@
 		1EA5558F189A462D00344013 /* icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5558C189A462D00344013 /* icon57.png */; };
 		1EA55590189A462D00344013 /* icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5558D189A462D00344013 /* icon58.png */; };
 		1EA55591189A462D00344013 /* icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5558E189A462D00344013 /* icon120.png */; };
-		46A346148F0A025557212288 /* CustomTextInputView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 068C4BB988DBEE9651A20894 /* CustomTextInputView.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		068C4BB988DBEE9651A20894 /* CustomTextInputView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = CustomTextInputView.mm; path = CustomTextInputView.mm; sourceTree = SOURCE_ROOT; };
 		1E0417D0189A70E5003F87D6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1E0417D1189A70E5003F87D6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1E0417D2189A70E5003F87D6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -198,7 +195,6 @@
 		1EA5558C189A462D00344013 /* icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon57.png; sourceTree = "<group>"; };
 		1EA5558D189A462D00344013 /* icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon58.png; sourceTree = "<group>"; };
 		1EA5558E189A462D00344013 /* icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120.png; sourceTree = "<group>"; };
-		2309445FA3843F97DD600E88 /* CustomTextInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CustomTextInputView.h; path = CustomTextInputView.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,8 +223,6 @@
 				1E480DB41859C4540052A2F2 /* hspproj */,
 				1E480DAD1859C4540052A2F2 /* Frameworks */,
 				1E480DAC1859C4540052A2F2 /* Products */,
-				068C4BB988DBEE9651A20894 /* CustomTextInputView.mm */,
-				2309445FA3843F97DD600E88 /* CustomTextInputView.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -455,26 +449,14 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		78E140D7BC8E1A67F1849CC2 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				11C24AC5A7F46221FEC10E8E /* CustomTextInputView.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		1E480DAA1859C4540052A2F2 /* hspInputTest */ = {
+		1E480DAA1859C4540052A2F2 /* grotate */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1E480DD71859C4540052A2F2 /* Build configuration list for PBXNativeTarget "hspInputTest" */;
+			buildConfigurationList = 1E480DD71859C4540052A2F2 /* Build configuration list for PBXNativeTarget "grotate" */;
 			buildPhases = (
 				1E480DA71859C4540052A2F2 /* Sources */,
 				1E480DA81859C4540052A2F2 /* Frameworks */,
 				1E480DA91859C4540052A2F2 /* Resources */,
-				78E140D7BC8E1A67F1849CC2 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -492,7 +474,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
-				ORGANIZATIONNAME = nennneko5787;
+				ORGANIZATIONNAME = "nennneko5787";
 				TargetAttributes = {
 					1E480DAA1859C4540052A2F2 = {
 						DevelopmentTeam = 5FH2J53M7P;
@@ -500,7 +482,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1E480DA61859C4540052A2F2 /* Build configuration list for PBXProject "hspInputTest" */;
+			buildConfigurationList = 1E480DA61859C4540052A2F2 /* Build configuration list for PBXProject "hspproj" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -514,7 +496,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1E480DAA1859C4540052A2F2 /* hspInputTest */,
+				1E480DAA1859C4540052A2F2 /* grotate */,
 			);
 		};
 /* End PBXProject section */
@@ -590,7 +572,6 @@
 				1E4AFF5925E00F4700213810 /* hspwnd_obj.cpp in Sources */,
 				1E4AFF2C25E00F4700213810 /* iOSBridge.mm in Sources */,
 				1E4AFF3225E00F4700213810 /* misc.mm in Sources */,
-				46A346148F0A025557212288 /* CustomTextInputView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,7 +742,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1E480DA61859C4540052A2F2 /* Build configuration list for PBXProject "hspInputTest" */ = {
+		1E480DA61859C4540052A2F2 /* Build configuration list for PBXProject "hspproj" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1E480DD51859C4540052A2F2 /* Debug */,
@@ -770,7 +751,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1E480DD71859C4540052A2F2 /* Build configuration list for PBXNativeTarget "hspInputTest" */ = {
+		1E480DD71859C4540052A2F2 /* Build configuration list for PBXNativeTarget "grotate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1E480DD81859C4540052A2F2 /* Debug */,
