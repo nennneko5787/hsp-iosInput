@@ -19,7 +19,7 @@
     stick key
 
     if (key & 256) {
-        devcontrol text, "close_keyboard"
+        devcontrol "close_keyboard"
     }
 
     await (1000 / 60)

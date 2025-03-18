@@ -5,7 +5,7 @@
 #include "hsp3r.h"
 
 #define _HSP3CNV_DATE "2025/03/18"
-#define _HSP3CNV_TIME "21:25:26"
+#define _HSP3CNV_TIME "21:27:43"
 #define _HSP3CNV_MAXVAR 3
 #define _HSP3CNV_MAXHPI 32
 #define _HSP3CNV_VERSION 0x360
@@ -102,10 +102,9 @@ static void L0005(void)
         TaskSwitch(6);
         return;
     }
-    //  _HspVar1, "close_keyboard"
+    //  "close_keyboard"
     PushStr("close_keyboard");
-    PushVAP(Var_1, 0);
-    Extcmd(74, 2);
+    Extcmd(74, 1);
     TaskSwitch(6);
 }
 
