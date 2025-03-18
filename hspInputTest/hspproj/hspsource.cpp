@@ -5,8 +5,8 @@
 #include "hsp3r.h"
 
 #define _HSP3CNV_DATE "2025/03/18"
-#define _HSP3CNV_TIME "21:11:29"
-#define _HSP3CNV_MAXVAR 2
+#define _HSP3CNV_TIME "21:25:26"
+#define _HSP3CNV_MAXVAR 3
 #define _HSP3CNV_MAXHPI 32
 #define _HSP3CNV_VERSION 0x360
 #define _HSP3CNV_BOOTOPT 4096
@@ -15,6 +15,7 @@
 
 static PVal *Var_0;
 static PVal *Var_1;
+static PVal *Var_2;
 
 /*-----------------------------------------------------------*/
 
@@ -23,6 +24,7 @@ void __HspEntry(void)
     // Var initalize
     Var_0 = &mem_var[0];
     Var_1 = &mem_var[1];
+    Var_2 = &mem_var[2];
 
     // objsize 300, 60
     PushInt(60);
@@ -88,13 +90,34 @@ static void L0005(void)
     // redraw 1
     PushInt(1);
     Extcmd(27, 1);
-    // await 1000/60
-    PushInt(16); /*OPT*/
-    Prgcmd(8, 1);
+    // stick _HspVar2
+    PushVAP(Var_2, 0);
+    Extcmd(52, 1);
+    // if _HspVar2&256
+    PushVar(Var_2, 0);
+    PushInt(256);
+    CalcAndI();
+    if (HspIf())
+    {
+        TaskSwitch(6);
+        return;
+    }
+    //  _HspVar1, "close_keyboard"
+    PushStr("close_keyboard");
+    PushVAP(Var_1, 0);
+    Extcmd(74, 2);
     TaskSwitch(6);
 }
 
 static void L0006(void)
+{
+    // await 1000/60
+    PushInt(16); /*OPT*/
+    Prgcmd(8, 1);
+    TaskSwitch(7);
+}
+
+static void L0007(void)
 {
     // loop
     Prgcmd(5, 0);
@@ -108,14 +131,6 @@ static void L0000(void)
 }
 
 static void L0001(void)
-{
-    // dialog "キーボードオープン！"
-    PushStr("キーボードオープン！");
-    Extcmd(3, 1);
-    TaskSwitch(7);
-}
-
-static void L0007(void)
 {
     //  "open_keyboard"
     PushStr("open_keyboard");
@@ -131,8 +146,8 @@ static void L0002(void)
     // stop
     Prgcmd(17, 0);
     return;
-    // goto *L0002
-    TaskSwitch(2);
+    // goto
+    Prgcmd(0, 0);
     return;
 }
 
