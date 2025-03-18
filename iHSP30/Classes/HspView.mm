@@ -26,7 +26,7 @@ static void showSystemKeyboard() {
 }
 
 static void closeSystemKeyboard() {
-    text_view.resignFirstResponder()
+    [text_view resignFirstResponder]
 }
 
 static int hsp3dish_devprm( char *name, char *value )
@@ -72,7 +72,8 @@ static char *hsp3dish_devinfo( char *name )
 		return mem_devinfo->error;
 	}
 	if ( strcmp( name, "keyboard_text" )==0 ) {
-		return text_view.text;
+        const char *cString = [text_view.text UTF8String];
+		return cString;
 	}
 	return NULL;
 }
