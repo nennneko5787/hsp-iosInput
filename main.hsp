@@ -15,6 +15,13 @@
             objprm objId, text
         }
     redraw 1
+
+    stick key
+
+    if (key & 256) {
+        devcontrol text, "close_keyboard"
+    }
+
     await (1000 / 60)
 	loop
 
