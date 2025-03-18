@@ -2,7 +2,7 @@
 
 このリポジトリは、**HSP3Dish iOS 版**でキーボードを表示する命令を追加するテストです。
 
-動作サンプル: <https://x.com/Fng1Popn/status/1901972482267250704>
+動作確認: <https://x.com/Fng1Popn/status/1901972482267250704>
 
 ## How To Build
 
@@ -18,6 +18,42 @@
 > [!NOTE]
 > 現時点では、input 命令を置き換えていません。  
 > また、テキストの選択・コピー・ペーストは行えません。
+
+## サンプルコード
+
+```hsp
+#include "hsp3dish.as"
+
+	objsize 300, 60
+    pos 10, 10
+	button gosub "キーボード表示", *openKeyBoard
+    objId = stat
+
+	repeat
+    devinfo text, "keyboard_text"
+
+    redraw 0
+        if (text == "") {
+            objprm objId, "キーボード表示"
+        } else {
+            objprm objId, text
+        }
+    redraw 1
+
+    stick key
+
+    if (key & 256) {
+        devcontrol "close_keyboard"
+    }
+
+    await (1000 / 60)
+	loop
+
+*openKeyBoard
+    devcontrol "open_keyboard"
+    return
+
+```
 
 ## Q & A
 
