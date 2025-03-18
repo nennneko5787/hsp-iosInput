@@ -23,9 +23,9 @@ static char *devres_none;
 // システムキーボード
 static void showSystemKeyboard() {
     text_view =  [[UITextView alloc] init];
-    text_view.hidden = YES;
+    [text_view setHidden:YES];
     text_view.editable = YES;
-    [hspview_controller.view addSubview:textInputView];
+    [hspview_controller.view addSubview:text_view];
 
     // キーボードを表示させるために、ビューがレスポンダにする
     [text_view becomeFirstResponder];
