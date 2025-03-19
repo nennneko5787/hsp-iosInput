@@ -494,13 +494,13 @@ static void hsp3dish_setdevinfo( void )
     // キャンセルボタン
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"キャンセル"
                                                                      style:UIBarButtonItemStylePlain
-                                                                    target:hspview_controller
+                                                                    target:self
                                                                     action:@selector(cancelInput)];
 
     // 完了ボタン
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完了"
                                                                    style:UIBarButtonItemStyleDone
-                                                                  target:hspview_controller
+                                                                  target:self
                                                                   action:@selector(doneInput)];
 
     // フレキシブルスペース（中央に空白を作る）
