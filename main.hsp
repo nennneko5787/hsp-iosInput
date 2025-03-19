@@ -3,11 +3,10 @@
 	objsize 300, 60
     pos 10, 10
 	button gosub "キーボード表示", *openKeyBoard
+    objId = stat
 
     pos 320, 10
     button gosub "パスワード表示にする", *setSecure
-
-    objId = stat
 
 	repeat
     devinfo text, "keyboard_text"

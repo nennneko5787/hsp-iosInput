@@ -5,7 +5,7 @@
 #include "hsp3r.h"
 
 #define _HSP3CNV_DATE "2025/03/19"
-#define _HSP3CNV_TIME "15:45:56"
+#define _HSP3CNV_TIME "15:51:04"
 #define _HSP3CNV_MAXVAR 4
 #define _HSP3CNV_MAXHPI 32
 #define _HSP3CNV_VERSION 0x360
@@ -41,6 +41,9 @@ void __HspEntry(void)
     PushStr("キーボード表\示");
     PushInt(1);
     Extcmd(0, 3);
+    // _HspVar0 =stat
+    PushSysvar(3, 0);
+    VarSet(Var_0, 0);
     // pos 320, 10
     PushInt(10);
     PushInt(320);
@@ -50,9 +53,6 @@ void __HspEntry(void)
     PushStr("パスワード表\示にする");
     PushInt(1);
     Extcmd(0, 3);
-    // _HspVar0 =stat
-    PushSysvar(3, 0);
-    VarSet(Var_0, 0);
     // repeat
     PushLabel(2);
     PushLabel(4);

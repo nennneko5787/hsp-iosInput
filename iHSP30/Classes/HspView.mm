@@ -78,10 +78,8 @@ static int hsp3dish_devcontrol( char *cmd, int p1, int p2, int p3 )
     }
     if ( strcmp( cmd, "set_keyboard_secure")==0 ) {
         if (p1 == 0) {
-            text_view.secureTextEntry = false;
             accessory_text_view.secureTextEntry = false;
         }else{
-            text_view.secureTextEntry = true;
             accessory_text_view.secureTextEntry = true;
         }
         return 0;
@@ -498,13 +496,13 @@ static void hsp3dish_setdevinfo( void )
     // キャンセルボタン
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"キャンセル"
                                                                      style:UIBarButtonItemStylePlain
-                                                                    target:self
+                                                                    target:hspview_controller
                                                                     action:@selector(cancelInput)];
 
     // 完了ボタン
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完了"
                                                                    style:UIBarButtonItemStyleDone
-                                                                  target:self
+                                                                  target:hspview_controller
                                                                   action:@selector(doneInput)];
 
     // フレキシブルスペース（中央に空白を作る）
