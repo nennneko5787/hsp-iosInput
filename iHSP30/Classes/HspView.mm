@@ -18,7 +18,7 @@ static HSP3DEVINFO *mem_devinfo;
 static HspViewController *hspview_controller;
 static UITextField *text_view;
 static UITextField *accessory_text_view;
-static char *before_text = "";
+static NSString *before_text = "";
 static int devinfo_dummy;
 static char *devres_none;
 
@@ -36,14 +36,14 @@ static void closeSystemKeyboard() {
 static int hsp3dish_devprm( char *name, char *value )
 {
     if ( strcmp( name, "set_keyboard_text")==0 ) {
-        before_text = value;
-        text_view.text = value;
-        accessory_text_view.text = value;
+        before_text = [NSString stringWithFormat:@"%c", value];
+        text_view.text = [NSString stringWithFormat:@"%c", value];
+        accessory_text_view.text = [NSString stringWithFormat:@"%c", value];
         return 0;
     }
     if ( strcmp( name, "set_keyboard_placeholder")==0 ) {
-        [[text_view setPlaceholder] text:value];
-        [[accessory_text_view setPlaceholder] text:value];
+        [[text_view setPlaceholder] text:[NSString stringWithFormat:@"%c", value]];
+        [[accessory_text_view setPlaceholder] text:[NSString stringWithFormat:@"%c", value]];
         return 0;
     }
     return -1;
