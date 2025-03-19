@@ -18,6 +18,7 @@ static HSP3DEVINFO *mem_devinfo;
 static HspViewController *hspview_controller;
 static UITextField *text_view;
 static UITextField *accessory_text_view;
+static char *before_text = "";
 static int devinfo_dummy;
 static char *devres_none;
 
@@ -34,7 +35,18 @@ static void closeSystemKeyboard() {
 
 static int hsp3dish_devprm( char *name, char *value )
 {
-	return -1;
+    if ( strcmp( name, "set_keyboard_text")==0 ) {
+        before_text = value;
+        text_view.text = value;
+        accessory_text_view.text = value;
+        return 0;
+    }
+    if ( strcmp( name, "set_keyboard_placeholder")==0 ) {
+        [[text_view setPlaceholder] text:value];
+        [[accessory_text_view setPlaceholder] text:value];
+        return 0;
+    }
+    return -1;
 }
 
 static int hsp3dish_devcontrol( char *cmd, int p1, int p2, int p3 )
@@ -54,6 +66,22 @@ static int hsp3dish_devcontrol( char *cmd, int p1, int p2, int p3 )
     }
     if ( strcmp( cmd, "close_keyboard")==0 ) {
         closeSystemKeyboard();
+        return 0;
+    }
+    if ( strcmp( cmd, "reset_keyboard")==0 ) {
+        before_text = "";
+        text_view.text = "";
+        accessory_text_view.text = "";
+        return 0;
+    }
+    if ( strcmp( cmd, "set_keyboard_secure")==0 ) {
+        if (p1 == 0) {
+            text_view.isSecureTextEntry = false;
+            accessory_text_view.isSecureTextEntry = false;
+        }else{
+            text_view.isSecureTextEntry = true;
+            accessory_text_view.isSecureTextEntry = true;
+        }
         return 0;
     }
 	return -1;
@@ -501,12 +529,13 @@ static void hsp3dish_setdevinfo( void )
 }
 
 - (void)cancelInput {
+    text_view.text = before_text
     [accessory_text_view endEditing:YES];
     [text_view endEditing:YES];
 }
 
 - (void)doneInput {
-    text_view.text = accessory_text_view.text;
+    before_text = text_view.text
     [accessory_text_view endEditing:YES];
     [text_view endEditing:YES];
 }
