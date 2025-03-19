@@ -483,6 +483,7 @@ static void hsp3dish_setdevinfo( void )
     // UITextField（入力ボックス）
     accessory_text_view = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, screenWidth - 160, 30)];
     accessory_text_view.borderStyle = UITextBorderStyleRoundedRect;
+    [accessory_text_view addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 
     // UITextFieldを配置するためのカスタムView
     UIBarButtonItem *textFieldItem = [[UIBarButtonItem alloc] initWithCustomView:accessory_text_view];
@@ -493,13 +494,17 @@ static void hsp3dish_setdevinfo( void )
     return toolbar;
 }
 
-// キャンセルボタンの処理
+- (void)textFieldDidChange:(UITextField *)textField {
+    if (textField == accessory_text_view) {
+        text_view.text = textField.text;
+    }
+}
+
 - (void)cancelInput {
     [accessory_text_view endEditing:YES];
     [text_view endEditing:YES];
 }
 
-// 完了ボタンの処理
 - (void)doneInput {
     text_view.text = accessory_text_view.text;
     [accessory_text_view endEditing:YES];

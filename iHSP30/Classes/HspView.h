@@ -36,6 +36,7 @@
 - (void)useMultiTouch;
 - (void)useRetina;
 - (UIView *)createAccessoryView;
+- (void)textFieldDidChange:(UITextField *)textField;
 - (void)cancelInput;
 - (void)doneInput;
 - (void)setParent:(UIViewController *)controller;
