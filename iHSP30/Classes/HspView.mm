@@ -31,7 +31,8 @@ static void showSystemKeyboard() {
 }
 
 static void closeSystemKeyboard() {
-    [self endEditing:YES];
+    [accessory_text_view resignFirstResponder];
+    [text_view resignFirstResponder];
 }
 
 static int hsp3dish_devprm( char *name, char *value )
@@ -528,12 +529,14 @@ static void hsp3dish_setdevinfo( void )
 
 - (void)cancelInput {
     text_view.text = before_text;
-    [self endEditing:YES];
+    [accessory_text_view resignFirstResponder];
+    [text_view resignFirstResponder];
 }
 
 - (void)doneInput {
     before_text = text_view.text;
-    [self endEditing:YES];
+    [accessory_text_view resignFirstResponder];
+    [text_view resignFirstResponder];
 }
 
 - (void)setParent:(UIViewController *)controller
