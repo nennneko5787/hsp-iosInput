@@ -69,18 +69,18 @@ static int hsp3dish_devcontrol( char *cmd, int p1, int p2, int p3 )
         return 0;
     }
     if ( strcmp( cmd, "reset_keyboard")==0 ) {
-        before_text = "";
-        text_view.text = "";
-        accessory_text_view.text = "";
+        before_text = @"";
+        text_view.text = @"";
+        accessory_text_view.text = @"";
         return 0;
     }
     if ( strcmp( cmd, "set_keyboard_secure")==0 ) {
         if (p1 == 0) {
-            text_view.isSecureTextEntry = false;
-            accessory_text_view.isSecureTextEntry = false;
+            text_view.secureTextEntry = false;
+            accessory_text_view.secureTextEntry = false;
         }else{
-            text_view.isSecureTextEntry = true;
-            accessory_text_view.isSecureTextEntry = true;
+            text_view.secureTextEntry = true;
+            accessory_text_view.secureTextEntry = true;
         }
         return 0;
     }
