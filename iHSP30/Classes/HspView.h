@@ -35,6 +35,9 @@
 - (void)UseAccelerometer:(float)freq;
 - (void)useMultiTouch;
 - (void)useRetina;
+- (UIView *)createAccessoryView;
+- (void)cancelInput;
+- (void)doneInput;
 - (void)setParent:(UIViewController *)controller;
 - (id)initWithFrameSide:(CGRect)frame;
 - (id)initWithFrameOrg:(CGRect)frame;

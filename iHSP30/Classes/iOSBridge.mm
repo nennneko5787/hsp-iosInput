@@ -557,7 +557,7 @@ void gpb_textbitmap( char *msg, int fontsize, int fontstyle, char *buffer, int p
                                              8,
                                              4 * pitch,
                                              colorSpace,
-                                             kCGImageAlphaPremultipliedFirst);
+                                             kCGImageAlphaPremultipliedLast);
 
     //コンテキストの設定
     UIGraphicsPushContext(context);

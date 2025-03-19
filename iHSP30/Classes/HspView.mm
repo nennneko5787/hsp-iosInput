@@ -16,7 +16,8 @@ void gb_setogl( EAGLContext *context, GLuint viewRenderBuff, GLuint viewFrameBuf
 /*----------------------------------------------------------*/
 static HSP3DEVINFO *mem_devinfo;
 static HspViewController *hspview_controller;
-static UITextView *text_view;
+static UITextField *text_view;
+static UITextField *accessory_text_view;
 static int devinfo_dummy;
 static char *devres_none;
 
@@ -455,15 +456,63 @@ static void hsp3dish_setdevinfo( void )
     hgio_autoscale(mode);
 }
 
+- (UIView *)createAccessoryView
+{
+    CGFloat screenWidth = hspview_controller.view.bounds.size.width;
+    
+    // UIToolbarを作成
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 44)];
+    toolbar.barStyle = UIBarStyleDefault;
+
+    // キャンセルボタン
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"キャンセル"
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:self
+                                                                    action:@selector(cancelInput)];
+
+    // 完了ボタン
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完了"
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(doneInput)];
+
+    // フレキシブルスペース（中央に空白を作る）
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+
+    // UITextField（入力ボックス）
+    accessory_text_view = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, screenWidth - 160, 30)];
+    accessory_text_view.borderStyle = UITextBorderStyleRoundedRect;
+
+    // UITextFieldを配置するためのカスタムView
+    UIBarButtonItem *textFieldItem = [[UIBarButtonItem alloc] initWithCustomView:accessory_text_view];
+
+    // UIToolbarにアイテムをセット
+    toolbar.items = @[cancelButton, flexibleSpace, textFieldItem, flexibleSpace, doneButton];
+
+    return toolbar;
+}
+
+// キャンセルボタンの処理
+- (void)cancelInput {
+    [self.mainTextField resignFirstResponder];  // キーボードを閉じる
+}
+
+// 完了ボタンの処理
+- (void)doneInput {
+    self.mainTextField.text = accessory_text_view.text;  // アクセサリのテキストをメインに反映
+    [self.mainTextField resignFirstResponder];  // キーボードを閉じる
+}
+
 - (void)setParent:(UIViewController *)controller
 {
     parent = controller;
     hspview_controller = (HspViewController *)controller;
 
     // システムキーボード初期化
-    text_view =  [[UITextView alloc] init];
+    text_view =  [[UITextField alloc] init];
     [text_view setHidden:YES];
     text_view.editable = YES;
+    text_view.inputAccessoryView = [createAccessoryView];
     [hspview_controller.view addSubview:text_view];
 
 	NSLog(@"---%x", controller );
