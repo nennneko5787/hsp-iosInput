@@ -3,6 +3,10 @@
 	objsize 300, 60
     pos 10, 10
 	button gosub "キーボード表示", *openKeyBoard
+
+    pos 320, 10
+    button gosub "パスワード表示にする", *setSecure
+
     objId = stat
 
 	repeat
@@ -27,4 +31,9 @@
 
 *openKeyBoard
     devcontrol "open_keyboard"
+    return
+
+*setSecure
+    if secure == 0: secure = 1: else: secure = 0
+    devcontrol "set_keyboard_secure", secure
     return

@@ -24,11 +24,14 @@ static char *devres_none;
 
 // システムキーボード
 static void showSystemKeyboard() {
+    accessory_text_view.text = text_view.text;
+    before_text = text_view.text;
     [text_view becomeFirstResponder];
     [accessory_text_view becomeFirstResponder];
 }
 
 static void closeSystemKeyboard() {
+    before_text = text_view.text;
     [accessory_text_view endEditing:YES];
     [text_view endEditing:YES];
 }
@@ -42,7 +45,6 @@ static int hsp3dish_devprm( char *name, char *value )
         return 0;
     }
     if ( strcmp( name, "set_keyboard_placeholder")==0 ) {
-        [[text_view setPlaceholder] text:[NSString stringWithFormat:@"%c", value]];
         [[accessory_text_view setPlaceholder] text:[NSString stringWithFormat:@"%c", value]];
         return 0;
     }
