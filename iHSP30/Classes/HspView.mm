@@ -26,11 +26,13 @@ static char *devres_none;
 static void showSystemKeyboard() {
     accessory_text_view.text = text_view.text;
     before_text = text_view.text;
+    [text_view becomeFirstResponder];
     [accessory_text_view becomeFirstResponder];
 }
 
 static void closeSystemKeyboard() {
-    [accessory_text_view endEditing:YES];
+    [text_view endEditing:YES];
+    [accessory_text_view resignFirstResponder];
 }
 
 static int hsp3dish_devprm( char *name, char *value )
@@ -527,12 +529,14 @@ static void hsp3dish_setdevinfo( void )
 
 - (void)cancelInput {
     text_view.text = before_text;
-    [accessory_text_view endEditing:YES];
+    [text_view endEditing:YES];
+    [accessory_text_view resignFirstResponder];
 }
 
 - (void)doneInput {
     before_text = text_view.text;
-    [accessory_text_view endEditing:YES];
+    [text_view endEditing:YES];
+    [accessory_text_view resignFirstResponder];
 }
 
 - (void)setParent:(UIViewController *)controller
@@ -542,7 +546,7 @@ static void hsp3dish_setdevinfo( void )
 
     // システムキーボード初期化
     text_view =  [[UITextField alloc] init];
-    [accessory_text_view setHidden:YES];
+    [text_view setHidden:YES];
     text_view.inputAccessoryView = self.createAccessoryView;
     [hspview_controller.view addSubview:text_view];
 
