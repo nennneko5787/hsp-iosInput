@@ -493,13 +493,13 @@ static void hsp3dish_setdevinfo( void )
 
 // キャンセルボタンの処理
 - (void)cancelInput {
-    [text_view resignFirstResponder];  // キーボードを閉じる
+    [text_view endEditing:YES];  // キーボードを閉じる
 }
 
 // 完了ボタンの処理
 - (void)doneInput {
     text_view.text = accessory_text_view.text;  // アクセサリのテキストをメインに反映
-    [text_view resignFirstResponder];  // キーボードを閉じる
+    [text_view endEditing:YES];  // キーボードを閉じる
 }
 
 - (void)setParent:(UIViewController *)controller
