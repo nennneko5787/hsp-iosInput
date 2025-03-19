@@ -456,8 +456,7 @@ static void hsp3dish_setdevinfo( void )
     hgio_autoscale(mode);
 }
 
-- (UIView *)createAccessoryView
-{
+- (UIView *)createAccessoryView {
     CGFloat screenWidth = hspview_controller.view.bounds.size.width;
     
     // UIToolbarを作成
@@ -511,7 +510,6 @@ static void hsp3dish_setdevinfo( void )
     // システムキーボード初期化
     text_view =  [[UITextField alloc] init];
     [text_view setHidden:YES];
-    text_view.editable = YES;
     text_view.inputAccessoryView = [createAccessoryView];
     [hspview_controller.view addSubview:text_view];
 
