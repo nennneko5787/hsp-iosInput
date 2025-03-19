@@ -510,7 +510,7 @@ static void hsp3dish_setdevinfo( void )
     // システムキーボード初期化
     text_view =  [[UITextField alloc] init];
     [text_view setHidden:YES];
-    text_view.inputAccessoryView = createAccessoryView();
+    text_view.inputAccessoryView = [self.createAccessoryView];
     [hspview_controller.view addSubview:text_view];
 
 	NSLog(@"---%x", controller );
