@@ -487,7 +487,7 @@ static void hsp3dish_setdevinfo( void )
     UIBarButtonItem *textFieldItem = [[UIBarButtonItem alloc] initWithCustomView:accessory_text_view];
 
     // UIToolbarにアイテムをセット
-    toolbar.items = @[cancelButton, flexibleSpace, textFieldItem, flexibleSpace, doneButton];
+    toolbar.items = @[textFieldItem, cancelButton, doneButton];
 
     return toolbar;
 }
