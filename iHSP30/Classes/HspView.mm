@@ -25,6 +25,7 @@ static char *devres_none;
 // システムキーボード
 static void showSystemKeyboard() {
     accessory_text_view.text = text_view.text;
+    before_text = text_view.text;
     [text_view becomeFirstResponder];
     [accessory_text_view becomeFirstResponder];
 }
