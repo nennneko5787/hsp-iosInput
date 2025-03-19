@@ -25,7 +25,7 @@ static char *devres_none;
 // システムキーボード
 static void showSystemKeyboard() {
     accessory_text_view.text = text_view.text;
-    before_text = text_view.text;
+    before_text = [text_view.text copy];
     [text_view becomeFirstResponder];
     [accessory_text_view becomeFirstResponder];
 }
@@ -528,13 +528,13 @@ static void hsp3dish_setdevinfo( void )
 }
 
 - (void)cancelInput {
-    text_view.text = before_text;
+    text_view.text = [before_text copy];
     [accessory_text_view resignFirstResponder];
     [text_view resignFirstResponder];
 }
 
 - (void)doneInput {
-    before_text = text_view.text;
+    before_text = [text_view.text copy];
     [accessory_text_view resignFirstResponder];
     [text_view resignFirstResponder];
 }
