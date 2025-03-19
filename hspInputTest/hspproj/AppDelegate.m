@@ -28,7 +28,7 @@
     [view useRetina];
 //    [view dispRotate:3];
     [view useMultiTouch];
-    [view dispViewX:1980 Y:1080];
+    [view dispViewX:1080 Y:1980];
     [view dispAutoScale:0];
     [view clsMode:0 color:0xffffff];
 //    [view UseAccelerometer::1.0f / 30.0f];

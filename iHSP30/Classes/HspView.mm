@@ -24,10 +24,12 @@ static char *devres_none;
 // システムキーボード
 static void showSystemKeyboard() {
     [text_view becomeFirstResponder];
+    [accessory_text_view becomeFirstResponder];
 }
 
 static void closeSystemKeyboard() {
-    [text_view resignFirstResponder];
+    [accessory_text_view endEditing:YES];
+    [text_view endEditing:YES];
 }
 
 static int hsp3dish_devprm( char *name, char *value )
@@ -493,13 +495,15 @@ static void hsp3dish_setdevinfo( void )
 
 // キャンセルボタンの処理
 - (void)cancelInput {
-    [text_view endEditing:YES];  // キーボードを閉じる
+    [accessory_text_view endEditing:YES];
+    [text_view endEditing:YES];
 }
 
 // 完了ボタンの処理
 - (void)doneInput {
-    text_view.text = accessory_text_view.text;  // アクセサリのテキストをメインに反映
-    [text_view endEditing:YES];  // キーボードを閉じる
+    text_view.text = accessory_text_view.text;
+    [accessory_text_view endEditing:YES];
+    [text_view endEditing:YES];
 }
 
 - (void)setParent:(UIViewController *)controller
