@@ -18,7 +18,7 @@ static HSP3DEVINFO *mem_devinfo;
 static HspViewController *hspview_controller;
 static UITextField *text_view;
 static UITextField *accessory_text_view;
-static NSString *before_text = "";
+static NSString *before_text = @"";
 static int devinfo_dummy;
 static char *devres_none;
 
@@ -529,13 +529,13 @@ static void hsp3dish_setdevinfo( void )
 }
 
 - (void)cancelInput {
-    text_view.text = before_text
+    text_view.text = before_text;
     [accessory_text_view endEditing:YES];
     [text_view endEditing:YES];
 }
 
 - (void)doneInput {
-    before_text = text_view.text
+    before_text = text_view.text;
     [accessory_text_view endEditing:YES];
     [text_view endEditing:YES];
 }
