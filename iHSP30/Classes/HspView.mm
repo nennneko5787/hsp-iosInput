@@ -28,7 +28,7 @@ static void showSystemKeyboard() {
     before_text = text_view.text;
     [text_view becomeFirstResponder];
     [accessory_text_view becomeFirstResponder];
-    [text_view resignFirstResponder]
+    [text_view resignFirstResponder];
 }
 
 static void closeSystemKeyboard() {
