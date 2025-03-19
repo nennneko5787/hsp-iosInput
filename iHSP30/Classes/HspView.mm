@@ -31,7 +31,6 @@ static void showSystemKeyboard() {
 }
 
 static void closeSystemKeyboard() {
-    [accessory_text_view endEditing:YES];
     [text_view endEditing:YES];
 }
 
@@ -529,13 +528,11 @@ static void hsp3dish_setdevinfo( void )
 
 - (void)cancelInput {
     text_view.text = before_text;
-    [accessory_text_view endEditing:YES];
     [text_view endEditing:YES];
 }
 
 - (void)doneInput {
     before_text = text_view.text;
-    [accessory_text_view endEditing:YES];
     [text_view endEditing:YES];
 }
 
